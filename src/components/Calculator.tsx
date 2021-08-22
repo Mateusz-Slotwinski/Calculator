@@ -14,6 +14,7 @@ function Calculator() {
 
     const results = () => {
         try {
+            // eslint-disable-next-line
             setResult(eval(result).toString());
         } catch(err) {
             setResult("Err");
@@ -22,6 +23,7 @@ function Calculator() {
 
     const square = () => {
         try {
+            // eslint-disable-next-line
             const a:number = eval(result)
             setResult(a*a as unknown as string);
         } catch(err) {
@@ -31,6 +33,7 @@ function Calculator() {
 
     const root = () => {
         try {
+            // eslint-disable-next-line
             const a:number = eval(result)
             setResult(Math.sqrt(a) as unknown as string);
         } catch(err) {
@@ -40,6 +43,7 @@ function Calculator() {
 
     const log = () => {
         try {
+            // eslint-disable-next-line
             const a:number = eval(result)
             setResult(Math.log(a) as unknown as string);
         } catch(err) {
@@ -49,6 +53,7 @@ function Calculator() {
 
     const exp = () => {
         try {
+            // eslint-disable-next-line
             const a:number = eval(result)
             setResult(Math.exp(a) as unknown as string);
         } catch(err) {
