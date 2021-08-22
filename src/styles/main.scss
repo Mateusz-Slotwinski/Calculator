@@ -6,23 +6,27 @@ body {
 }
 
 .number {
-  background-color: #000000b2 !important;
+  background-color: #404356 !important;
 }
 
 .basic {
-  background-color: #0a415aa8 !important;
+  background-color: #4C434F !important;
 }
 
 .trigonometric {
-  background-color: #15611bb7 !important;
+  background-color: #324851 !important;
   font-size:20px !important;
 }
 
 .advanced {
-  background-color: #a82663c0 !important;
+  background-color: #262834 !important;
   font-size:20px !important;
 }
 
 .operation {
-  background-color: #a35d0cc0 !important;
+  background-color: #262834 !important;
+}
+
+input:active, input:focus, button:focus, button:active {
+  outline:none;
 }
