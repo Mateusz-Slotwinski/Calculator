@@ -8,6 +8,8 @@ function Calculator() {
             </Screen>
             <KeysContainer>
                 <Key>1</Key>
+                <Key>1</Key>
+                <Key>1</Key>
             </KeysContainer>
         </Outline>
     );
@@ -42,7 +44,7 @@ function Calculator() {
   const Key = styled.div`
   font-size:40px;
   display:block;
-  width:62.5px;
+  width:80px;
   height:100px;
   color:#e3e3e3;
   border-radius:10px;
