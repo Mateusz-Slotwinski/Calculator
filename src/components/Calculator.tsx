@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 
 function Calculator() {
+
     const [result, setResult] = useState("");
 
     const handleClick = (e: any) => {
-        setResult(result.concat(e.target.name));
+        setResult(result + e.target.name);
     }
-
+    
     const clear = () => {
         setResult("");
     }
-
-    const results = () => {
+    
+    const count = () => {
         try {
             // eslint-disable-next-line
             setResult(eval(result).toString());
@@ -21,64 +22,117 @@ function Calculator() {
         }
     }
 
-    const square = () => {
-        try {
-            // eslint-disable-next-line
-            const a:number = eval(result)
-            setResult(a*a as unknown as string);
-        } catch(err) {
-            setResult("Err");
+    const calc = {
+        square() {
+            try {
+                // eslint-disable-next-line
+                const a:number = eval(result)
+                setResult(a*a as unknown as string);
+            } catch(err) {
+                setResult("Err");
+            }
+        },
+        root () {
+            try {
+                // eslint-disable-next-line
+                const a:number = eval(result)
+                setResult(Math.sqrt(a) as unknown as string);
+            } catch(err) {
+                setResult("Err");
+            }
+        },
+        log () {
+            try {
+                // eslint-disable-next-line
+                const a:number = eval(result)
+                setResult(Math.log(a) as unknown as string);
+            } catch(err) {
+                setResult("Err");
+            }
+        },
+        exp () {
+            try {
+                // eslint-disable-next-line
+                const a:number = eval(result)
+                setResult(Math.exp(a) as unknown as string);
+            } catch(err) {
+                setResult("Err");
+            }
+        },
+        trig: {
+            sin () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.sin(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            },
+            cos () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.cos(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            },
+            tan () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.tan(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            },
+            asin () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.asin(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            },
+            acos () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.acos(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            },
+            atan () {
+                try {
+                    // eslint-disable-next-line
+                    const a:number = eval(result)
+                    setResult(Math.atan(a) as unknown as string);
+                } catch(err) {
+                    setResult("Err");
+                }
+            }
         }
     }
-
-    const root = () => {
-        try {
-            // eslint-disable-next-line
-            const a:number = eval(result)
-            setResult(Math.sqrt(a) as unknown as string);
-        } catch(err) {
-            setResult("Err");
-        }
-    }
-
-    const log = () => {
-        try {
-            // eslint-disable-next-line
-            const a:number = eval(result)
-            setResult(Math.log(a) as unknown as string);
-        } catch(err) {
-            setResult("Err");
-        }
-    }
-
-    const exp = () => {
-        try {
-            // eslint-disable-next-line
-            const a:number = eval(result)
-            setResult(Math.exp(a) as unknown as string);
-        } catch(err) {
-            setResult("Err");
-        }
-    }
-
-
 
     return (
         <Outline>
             <Screen type="text" value={result} />
             <KeyContainer>
-                <Key name="sin" onClick={handleClick} className="trigonometric">sin</Key>
-                <Key name="cos" onClick={handleClick} className="trigonometric">cos</Key>
-                <Key name="tg" onClick={handleClick} className="trigonometric">tg</Key> 
+                <Key name="sin" onClick={calc.trig.sin} className="trigonometric">sin</Key>
+                <Key name="cos" onClick={calc.trig.cos} className="trigonometric">cos</Key>
+                <Key name="tg" onClick={calc.trig.tan} className="trigonometric">tg</Key> 
                 <Key name="(" onClick={handleClick} className="operation">(</Key>
                 <Key name=")" onClick={handleClick} className="operation">)</Key> 
                 <Key id="clear" onClick={clear} className="operation">␡</Key>
 
-                <Key name="arcsin" onClick={handleClick} className="trigonometric">arcsin</Key> 
-                <Key name="arccos" onClick={handleClick} className="trigonometric">arccos</Key>
-                <Key name="arctg" onClick={handleClick} className="trigonometric">arctg</Key>
-                <Key name="ln" onClick={log} className="advanced">ln</Key>
-                <Key name="ex" onClick={exp} className="advanced">eˣ</Key>
+                <Key name="arcsin" onClick={calc.trig.asin} className="trigonometric">arcsin</Key> 
+                <Key name="arccos" onClick={calc.trig.acos} className="trigonometric">arccos</Key>
+                <Key name="arctg" onClick={calc.trig.atan} className="trigonometric">arctg</Key>
+                <Key name="ln" onClick={calc.log} className="advanced">ln</Key>
+                <Key name="ex" onClick={calc.exp} className="advanced">eˣ</Key>
                 <Key name="%" onClick={handleClick} className="basic">%</Key>
 
                 <Key name="1" onClick={handleClick} className="number">1</Key>
@@ -92,15 +146,15 @@ function Calculator() {
                 <Key name="5" onClick={handleClick} className="number">5</Key>
                 <Key name="6" onClick={handleClick} className="number">6</Key>
                 <Key name="/" onClick={handleClick} className="basic">÷</Key>
-                <Key name="root" onClick={root} className="basic">√</Key>
-                <Key name="square" onClick={square} className="basic">x²</Key>
+                <Key name="root" onClick={calc.root} className="basic">√</Key>
+                <Key name="square" onClick={calc.square} className="basic">x²</Key>
 
                 <Key name="7" onClick={handleClick} className="number">7</Key>
                 <Key name="8" onClick={handleClick} className="number">8</Key>
                 <Key name="9" onClick={handleClick} className="number">9</Key>
                 <Key name="0" onClick={handleClick} className="number">0</Key>
                 <Key name="." onClick={handleClick} className="basic">,</Key>
-                <Key id="result" onClick={results} className="basic"> = </Key>
+                <Key id="result" onClick={count} className="basic"> = </Key>
 
             </KeyContainer>
         </Outline>
