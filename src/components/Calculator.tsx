@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
 
 function Calculator() {
 
@@ -117,47 +118,92 @@ function Calculator() {
     }
 
     return (
-        <div className="outline">
-            <input className="screen" type="text" value={result} />
-            <div className="keyContainer">
-                <button className="key trigonometric" name="sin" onClick={calc.trig.sin}>sin</button>
-                <button className="key trigonometric" name="cos" onClick={calc.trig.cos}>cos</button>
-                <button className="key trigonometric" name="tg" onClick={calc.trig.tan}>tg</button> 
-                <button className="key operation" name="(" onClick={handleClick}>(</button>
-                <button className="key operation" name=")" onClick={handleClick}>)</button> 
-                <button className="key operation" id="clear" onClick={clear}>␡</button>
+        <Outline>
+            <Screen type="text" value={result} />
+            <KeyContainer>
+                <Key name="sin" onClick={calc.trig.sin} className="trigonometric">sin</Key>
+                <Key name="cos" onClick={calc.trig.cos} className="trigonometric">cos</Key>
+                <Key name="tg" onClick={calc.trig.tan} className="trigonometric">tg</Key> 
+                <Key name="(" onClick={handleClick} className="operation">(</Key>
+                <Key name=")" onClick={handleClick} className="operation">)</Key> 
+                <Key id="clear" onClick={clear} className="operation">␡</Key>
 
-                <button className="key trigonometric" name="arcsin" onClick={calc.trig.asin}>arcsin</button> 
-                <button className="key trigonometric" name="arccos" onClick={calc.trig.acos}>arccos</button>
-                <button className="key trigonometric" name="arctg" onClick={calc.trig.atan}>arctg</button>
-                <button className="key advanced" name="ln" onClick={calc.log}>ln</button>
-                <button className="key advanced" name="ex" onClick={calc.exp}>eˣ</button>
-                <button className="key basic" name="%" onClick={handleClick}>%</button>
+                <Key name="arcsin" onClick={calc.trig.asin} className="trigonometric">arcsin</Key> 
+                <Key name="arccos" onClick={calc.trig.acos} className="trigonometric">arccos</Key>
+                <Key name="arctg" onClick={calc.trig.atan} className="trigonometric">arctg</Key>
+                <Key name="ln" onClick={calc.log} className="advanced">ln</Key>
+                <Key name="ex" onClick={calc.exp} className="advanced">eˣ</Key>
+                <Key name="%" onClick={handleClick} className="basic">%</Key>
 
-                <button className="key number" name="1" onClick={handleClick}>1</button>
-                <button className="key number" name="2" onClick={handleClick}>2</button>
-                <button className="key number" name="3" onClick={handleClick}>3</button>
-                <button className="key basic" name="+" onClick={handleClick}>+</button> 
-                <button className="key basic" name="-" onClick={handleClick}>−</button>
-                <button className="key basic" name="*" onClick={handleClick}>×</button>
+                <Key name="1" onClick={handleClick} className="number">1</Key>
+                <Key name="2" onClick={handleClick} className="number">2</Key>
+                <Key name="3" onClick={handleClick} className="number">3</Key>
+                <Key name="+" onClick={handleClick} className="basic">+</Key> 
+                <Key name="-" onClick={handleClick} className="basic">−</Key>
+                <Key name="*" onClick={handleClick} className="basic">×</Key>
 
-                <button className="key number" name="4" onClick={handleClick}>4</button>
-                <button className="key number" name="5" onClick={handleClick}>5</button>
-                <button className="key number" name="6" onClick={handleClick}>6</button>
-                <button className="key basic" name="/" onClick={handleClick}>÷</button>
-                <button className="key basic" name="root" onClick={calc.root}>√</button>
-                <button className="key basic" name="square" onClick={calc.square}>x²</button>
+                <Key name="4" onClick={handleClick} className="number">4</Key>
+                <Key name="5" onClick={handleClick} className="number">5</Key>
+                <Key name="6" onClick={handleClick} className="number">6</Key>
+                <Key name="/" onClick={handleClick} className="basic">÷</Key>
+                <Key name="root" onClick={calc.root} className="basic">√</Key>
+                <Key name="square" onClick={calc.square} className="basic">x²</Key>
 
-                <button className="key number" name="7" onClick={handleClick}>7</button>
-                <button className="key number" name="8" onClick={handleClick}>8</button>
-                <button className="key number" name="9" onClick={handleClick}>9</button>
-                <button className="key number" name="0" onClick={handleClick}>0</button>
-                <button className="key basic" name="." onClick={handleClick}>,</button>
-                <button className="key basic" id="result" onClick={count}> = </button>
+                <Key name="7" onClick={handleClick} className="number">7</Key>
+                <Key name="8" onClick={handleClick} className="number">8</Key>
+                <Key name="9" onClick={handleClick} className="number">9</Key>
+                <Key name="0" onClick={handleClick} className="number">0</Key>
+                <Key name="." onClick={handleClick} className="basic">,</Key>
+                <Key id="result" onClick={count} className="basic"> = </Key>
 
-            </div>
-        </div>
+            </KeyContainer>
+        </Outline>
     );
   }
+
+  const Outline = styled.div`
+  width:540px;
+  height:700px;
+  background:#001A21;
+  border-radius:35px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;`
+
+  const Screen = styled.input`
+  margin:20px 10px;
+  flex-grow:1;
+  box-sizing:border-box;
+  border:none;
+  border-radius:15px;
+  background:#ffffff05;
+  padding:15px;
+  text-align:right;
+  font-size:40px;
+  color:white;`
+
+  const KeyContainer = styled.div`
+  height:540px;
+  box-sizing:border-box;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  margin:10px;`
+
+  const Key = styled.button`
+  font-size:35px;
+  display:block;
+  width:70px;
+  height:80px;
+  color:#e3e3e3;
+  border-radius:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#262834;
+  margin:5px;
+  cursor:pointer;
+  border:none;
+  `
 
 export default Calculator;
